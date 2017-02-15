@@ -1,0 +1,6 @@
+*.o
+core
+sr
+*.dump
+*.tar
+tags
