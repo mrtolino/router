@@ -17,7 +17,23 @@
   See the comments in the header file for an idea of what it should look like.
 */
 void sr_arpcache_sweepreqs(struct sr_instance *sr) { 
-    /* Fill this in */
+  /*pthread_mutex_lock(&(sr->cache.lock));*/
+  
+  if (!sr || !sr->cache.requests)
+    return;
+
+  struct sr_arpreq * reqs = sr->cache.requests;
+  struct sr_arpreq * nxt = reqs->next;
+  
+  handle_arpreq(sr, reqs);
+  while(nxt)
+  {
+    reqs = nxt;
+    nxt = reqs->next;
+    handle_arpreq(sr, reqs);
+  }
+
+  /*pthread_mutex_unlock(&(sr->cache.lock));*/
 }
 
 /* You should not need to touch the rest of this code. */

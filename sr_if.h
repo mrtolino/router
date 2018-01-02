@@ -5,7 +5,7 @@
  *
  * Description:
  *
- * Data structures and methods for handeling interfaces
+ * Data structures and methods for handling interfaces
  *
  *---------------------------------------------------------------------------*/
 
